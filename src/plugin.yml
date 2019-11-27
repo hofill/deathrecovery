@@ -1,0 +1,9 @@
+main: com.hofill.deathrecovery.main
+version: 1.0
+name: DeathRecovery
+api-version: 1.13
+
+commands:
+  a:
+    description: 
+    usage: 
