@@ -1,4 +1,0 @@
-#Time is set using (w-weeks,d-days,h-hours,s-seconds, i.e. 4d means 4 days)
-
-time_between_checks: 
-oldest_death_allowed: 
