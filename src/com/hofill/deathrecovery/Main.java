@@ -15,7 +15,7 @@ public class Main extends JavaPlugin {
 	}
 
 	public void registerCommands() {
-
+		
 	}
 
 	public void registerAutoComplete() {
@@ -29,8 +29,12 @@ public class Main extends JavaPlugin {
 	public void registerConfig() {
 		getConfig().options().copyDefaults(true);
 		saveDefaultConfig();
+	}
+	
+	public void registerDeathConfig() {
 		ConfigManager.setup();
 		ConfigManager.get().options().copyDefaults(true);
+		ConfigManager.save();
 	}
 
 }
