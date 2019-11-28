@@ -2,12 +2,15 @@ package com.hofill.deathrecovery;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitScheduler;
+
+import com.hofill.deathrecovery.events.PlayerDeath;
 
 public class Main extends JavaPlugin {
 
 	public void onEnable() {
 		registerConfig();
+		registerDeathConfig();
+		registerEvents();
 	}
 
 	public static void tellConsole(String msg) {
@@ -23,7 +26,7 @@ public class Main extends JavaPlugin {
 	}
 
 	public void registerEvents() {
-
+		getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
 	}
 
 	public void registerConfig() {
@@ -33,8 +36,8 @@ public class Main extends JavaPlugin {
 	
 	public void registerDeathConfig() {
 		ConfigManager.setup();
-		ConfigManager.get().options().copyDefaults(true);
-		ConfigManager.save();
+		ConfigManager.getConfig().options().copyDefaults(true);
+		ConfigManager.saveConfig();
 	}
 
 }

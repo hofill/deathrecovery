@@ -1,6 +1,7 @@
 package com.hofill.deathrecovery;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -28,15 +29,20 @@ public class ConfigManager {
 
 	}
 
-	public static FileConfiguration get() {
+	public static FileConfiguration getConfig() {
 		return deathsFile;
 	}
 
-	public static void save() {
-		plugin.saveResource("deaths.yml", false);
+	public static void saveConfig() {
+		try {
+			deathsFile.save(file);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	public static void reload() {
+	public static void reloadConfig() {
 		deathsFile = YamlConfiguration.loadConfiguration(file);
 	}
 

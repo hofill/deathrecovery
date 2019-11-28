@@ -1,13 +1,15 @@
 # The list of players and their deaths, with useful information.
-
-players:
-   #- username: 
-   #     - death_id:
-   #       death_x:
-   #       death_y:
-   #       death_z:
-   #       death_type:
-   #       item_count:
-   #       server_time:
+# DO NOT edit anything inside of here
+# players:
+# - uuid: 
+#     - death_id:
+#          -death_x:
+#           death_y:
+#           death_z:
+#           death_type:
+#           item_count:
+#           server_time:
+#           items:
+#              -(position_in_inventory): item
+#               (position_in_inventory): item
           
-      
