@@ -4,6 +4,12 @@ name: DeathRecovery
 api-version: 1.13
 
 commands:
-  a:
-    description: 
-    usage: 
+   restoreinvgive:
+      description: Set user's inventory to his selected death inventory.  
+      usage: /restoreinvgive <player> <number> <player>
+   restoreinvsee:
+      description: Opens a container with user's selected death inventory.
+      usage: /restoreinvsee <player> <number>
+   deaths:
+      description: Shows all stored deaths for the player.
+      usage: /deaths <player> 
