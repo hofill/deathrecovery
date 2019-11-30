@@ -3,6 +3,7 @@ package com.hofill.deathrecovery;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.hofill.deathrecovery.commands.Deaths;
 import com.hofill.deathrecovery.events.PlayerDeath;
 
 public class Main extends JavaPlugin {
@@ -11,6 +12,7 @@ public class Main extends JavaPlugin {
 		registerConfig();
 		registerDeathConfig();
 		registerEvents();
+		registerCommands();
 	}
 
 	public static void tellConsole(String msg) {
@@ -18,7 +20,7 @@ public class Main extends JavaPlugin {
 	}
 
 	public void registerCommands() {
-		
+		getCommand("mastermind").setExecutor(new Deaths());
 	}
 
 	public void registerAutoComplete() {

@@ -1,3 +1,6 @@
+author: Chormi
+description: Recovers death inventories on CK.
+website: https://gitlab.com/cubekrowd/deathrecovery
 main: com.hofill.deathrecovery.Main
 version: 1.0
 name: DeathRecovery
@@ -5,11 +8,24 @@ api-version: 1.13
 
 commands:
    restoreinvgive:
-      description: Set user's inventory to his selected death inventory.  
+      description: Set user's inventory to his selected death inventory.
+      aliases: rig  
       usage: /restoreinvgive <player> <number> <player>
    restoreinvsee:
       description: Opens a container with user's selected death inventory.
+      aliases: ris
       usage: /restoreinvsee <player> <number>
    deaths:
       description: Shows all stored deaths for the player.
       usage: /deaths <player> 
+      
+permissions:
+   deathrecovery.deaths:
+      description: Gives access to death command.
+      default: op
+   deathrecovery.restoregive:
+      description: Gives access to the restore give command.
+      default: op
+   deathrecovery.restoresee:
+      description: Gives access to the restore see command.
+      default: op
