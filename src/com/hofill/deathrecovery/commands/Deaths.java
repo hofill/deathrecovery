@@ -38,7 +38,7 @@ public class Deaths implements CommandExecutor {
 						String playerUUID = offlinePlayer.getUniqueId().toString();
 						ConfigurationSection sectionDeaths = ConfigManager.getConfig()
 								.getConfigurationSection("players." + playerUUID);
-						//Get data from deaths.yml if there are any
+						// Get data from deaths.yml if there is any
 						if (sectionDeaths != null) {
 							player.sendMessage(ChatColor.GOLD + args[0] + "'s deaths:");
 							for (String death : sectionDeaths.getKeys(false)) {
@@ -56,10 +56,10 @@ public class Deaths implements CommandExecutor {
 										.getString("players." + playerUUID + "." + death + ".item_count");
 								String server_time = ConfigManager.getConfig()
 										.getString("players." + playerUUID + "." + death + ".server_time");
-								//Get difference of time
+								// Get difference of time
 								String time_difference = getTimeDifference(server_time);
 								String coordinates = String.format(" X=%s Y=%s Z=%s ", death_x, death_y, death_z);
-								//Send message with death info
+								// Send message with death info
 								player.spigot()
 										.sendMessage(new ComponentBuilder("#" + death + " ").color(ChatColor.WHITE)
 												.bold(true).append(time_difference + death_type + " at")

@@ -8,8 +8,11 @@ public class RestoreInvGive implements CommandExecutor{
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		if(label.equalsIgnoreCase("restoreinvgive")) {
+			
+		}
+		return true;
 	}
 
 }

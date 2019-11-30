@@ -35,7 +35,7 @@ public class Main extends JavaPlugin {
 		getConfig().options().copyDefaults(true);
 		saveDefaultConfig();
 	}
-	
+
 	public void registerDeathConfig() {
 		ConfigManager.setup();
 		ConfigManager.getConfig().options().copyDefaults(true);
