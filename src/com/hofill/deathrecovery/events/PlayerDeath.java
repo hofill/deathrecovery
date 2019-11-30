@@ -1,8 +1,9 @@
 package com.hofill.deathrecovery.events;
 
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -43,8 +44,8 @@ public class PlayerDeath implements Listener {
 			}
 		}
 		// Fill up data in deaths.yml after death
-		Date date = new Date();
-		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+	    LocalDateTime currentDateTime = LocalDateTime.now(ZoneId.systemDefault());
 		ConfigManager.getConfig().set("players." + playerUUID + "." + deathId + ".death_x",
 				player.getLocation().getBlockX());
 		ConfigManager.getConfig().set("players." + playerUUID + "." + deathId + ".death_y",
@@ -52,7 +53,7 @@ public class PlayerDeath implements Listener {
 		ConfigManager.getConfig().set("players." + playerUUID + "." + deathId + ".death_z",
 				player.getLocation().getBlockZ());
 		ConfigManager.getConfig().set("players." + playerUUID + "." + deathId + ".death_type", event.getDeathMessage());
-		ConfigManager.getConfig().set("players." + playerUUID + "." + deathId + ".server_time", format.format(date));
+		ConfigManager.getConfig().set("players." + playerUUID + "." + deathId + ".server_time", currentDateTime.format(format));
 		int inventoryCount = 0;
 		int indexItems = 0;
 		// Get items from inventory and add them to deaths.yml

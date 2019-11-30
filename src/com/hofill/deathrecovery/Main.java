@@ -20,7 +20,7 @@ public class Main extends JavaPlugin {
 	}
 
 	public void registerCommands() {
-		getCommand("mastermind").setExecutor(new Deaths());
+		getCommand("deaths").setExecutor(new Deaths());
 	}
 
 	public void registerAutoComplete() {
