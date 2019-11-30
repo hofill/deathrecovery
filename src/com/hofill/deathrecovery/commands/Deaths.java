@@ -18,6 +18,9 @@ import org.bukkit.entity.Player;
 import com.hofill.deathrecovery.ConfigManager;
 
 import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
 
 public class Deaths implements CommandExecutor {
 
@@ -35,7 +38,7 @@ public class Deaths implements CommandExecutor {
 						String playerUUID = offlinePlayer.getUniqueId().toString();
 						ConfigurationSection sectionDeaths = ConfigManager.getConfig()
 								.getConfigurationSection("players." + playerUUID);
-						// Get data from deaths.yml if there are any
+						//Get data from deaths.yml if there are any
 						if (sectionDeaths != null) {
 							player.sendMessage(ChatColor.GOLD + args[0] + "'s deaths:");
 							for (String death : sectionDeaths.getKeys(false)) {
@@ -53,13 +56,28 @@ public class Deaths implements CommandExecutor {
 										.getString("players." + playerUUID + "." + death + ".item_count");
 								String server_time = ConfigManager.getConfig()
 										.getString("players." + playerUUID + "." + death + ".server_time");
-								// Get difference of time
+								//Get difference of time
 								String time_difference = getTimeDifference(server_time);
 								String coordinates = String.format(" X=%s Y=%s Z=%s ", death_x, death_y, death_z);
-								
-								player.sendMessage(
-										ChatColor.WHITE + "#" + death + " " + ChatColor.GRAY + time_difference
-												+ death_type + " at" + coordinates + "(" + item_count + " items)");
+								//Send message with death info
+								player.spigot()
+										.sendMessage(new ComponentBuilder("#" + death + " ").color(ChatColor.WHITE)
+												.bold(true).append(time_difference + death_type + " at")
+												.color(ChatColor.GRAY).bold(false).append(coordinates)
+												.color(ChatColor.DARK_GRAY).bold(true)
+												.event(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+														new ComponentBuilder("Click to teleport!").color(ChatColor.BLUE)
+																.create()))
+												.event(new ClickEvent(ClickEvent.Action.RUN_COMMAND,
+														"/tp @p " + death_x + " " + death_y + " " + death_z))
+												.append("(" + item_count + " items)").color(ChatColor.DARK_GRAY)
+												.bold(true)
+												.event(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+														new ComponentBuilder("Click to show inventory!")
+																.color(ChatColor.BLUE).create()))
+												.event(new ClickEvent(ClickEvent.Action.RUN_COMMAND,
+														"/restoreinvsee " + args[0] + " " + death))
+												.create());
 							}
 						} else {
 							player.sendMessage(
@@ -92,6 +110,7 @@ public class Deaths implements CommandExecutor {
 		Duration duration = Duration.between(cut, secondDate);
 		String result = String.format("%sy %sm %sd %sh %sm %ss ago: ", period.getYears(), period.getMonths(),
 				period.getDays(), duration.toHours(), duration.toMinutesPart(), duration.toSecondsPart());
+		// Removes time info if 0
 		if (period.getYears() == 0) {
 			result = result.replace("0y ", "");
 		}
