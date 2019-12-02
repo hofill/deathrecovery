@@ -22,7 +22,7 @@ public class RestoreInvSee implements CommandExecutor {
 				if (sender instanceof Player) {
 					if (parseInt(args[1]) != -1) {
 						Player player = (Player) sender;
-						if (player.hasPermission("restoreinvsee")) {
+						if (player.hasPermission("deathrecovery.restoresee")) {
 							@SuppressWarnings("deprecation")
 							OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(args[0]);
 							String playerUUID = offlinePlayer.getUniqueId().toString();
