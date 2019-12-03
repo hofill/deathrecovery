@@ -18,11 +18,12 @@ public class PlayerJoin implements Listener {
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
-		if(getFull(player.getInventory())) {
-			String playerUUID = player.getUniqueId().toString();
-			ConfigurationSection sectionPlayers = ConfigManager.getConfig()
-					.getConfigurationSection("offline_players." + playerUUID);
-			if (sectionPlayers != null) {
+		String playerUUID = player.getUniqueId().toString();
+		ConfigurationSection sectionPlayers = ConfigManager.getConfig()
+				.getConfigurationSection("offline_players." + playerUUID);
+		if (sectionPlayers != null) {
+			// See if the player's inventory has items in it
+			if(getFull(player.getInventory())) {
 				String death_id = ConfigManager.getConfig().getString("offline_players." + playerUUID + ".death_id");
 				String inv_name = ConfigManager.getConfig().getString("offline_players." + playerUUID + ".inv_name");
 				ConfigurationSection sectionItems = ConfigManager.getConfig()
@@ -36,11 +37,11 @@ public class PlayerJoin implements Listener {
 					removeFromYAML(playerUUID);
 				}
 				
+			} else {
+				player.sendMessage(ChatColor.RED + "Could not restore your death inventory because your inventory is full!");
+				player.sendMessage(ChatColor.RED + "Clear out your inventory and log back in!");
 			}
-		} else {
-			player.sendMessage(ChatColor.RED + "Could not restore your death inventory because your inventory is full!");
-			player.sendMessage(ChatColor.RED + "Clear out your inventory and log back in!");
-		}
+		} 
 	}
 	
 	private void removeFromYAML(String playerUUID) {
