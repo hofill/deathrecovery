@@ -25,19 +25,21 @@ public class Timer {
 						for (String key : sectionPlayers.getKeys(false)) {
 							ConfigurationSection sectionDeaths = ConfigManager.getConfig()
 									.getConfigurationSection("players." + key);
-							for(String death : sectionDeaths.getKeys(false)) {
-								String dateDeathString = ConfigManager.getConfig().getString("players." + key + "." + death + ".server_time");
-								Date dateDeath = new Date();
-								try {
-									dateDeath = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").parse(dateDeathString);
-								} catch (Exception ex) {
-								}
-								Date serverDate = new Date();
-								
-								if(timeToRemoveMilli <= serverDate.getTime() - dateDeath.getTime()) {
-									ConfigManager.getConfig().getConfigurationSection("players." + key).set(death, null);
-									ConfigManager.saveConfig();
-									ConfigManager.reloadConfig();
+							if(sectionDeaths != null) {
+								for(String death : sectionDeaths.getKeys(false)) {
+									String dateDeathString = ConfigManager.getConfig().getString("players." + key + "." + death + ".server_time");
+									Date dateDeath = new Date();
+									try {
+										dateDeath = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").parse(dateDeathString);
+									} catch (Exception ex) {
+									}
+									Date serverDate = new Date();
+									
+									if(timeToRemoveMilli <= serverDate.getTime() - dateDeath.getTime()) {
+										ConfigManager.getConfig().getConfigurationSection("players." + key).set(death, null);
+										ConfigManager.saveConfig();
+										ConfigManager.reloadConfig();
+									}
 								}
 							}
 						}
