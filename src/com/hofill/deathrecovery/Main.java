@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.hofill.deathrecovery.commands.Deaths;
+import com.hofill.deathrecovery.commands.RestoreInvGive;
 import com.hofill.deathrecovery.commands.RestoreInvSee;
 import com.hofill.deathrecovery.events.InventoryClick;
 import com.hofill.deathrecovery.events.PlayerDeath;
@@ -24,6 +25,7 @@ public class Main extends JavaPlugin {
 	public void registerCommands() {
 		getCommand("deaths").setExecutor(new Deaths());
 		getCommand("restoreinvsee").setExecutor(new RestoreInvSee());
+		getCommand("restoreinvgive").setExecutor(new RestoreInvGive());
 	}
 
 	public void registerAutoComplete() {

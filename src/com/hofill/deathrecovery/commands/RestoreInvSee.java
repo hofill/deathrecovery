@@ -90,6 +90,7 @@ public class RestoreInvSee implements CommandExecutor {
 								player.openInventory(inventory);
 							} else {
 								player.sendMessage(ChatColor.RED + "The player or the death ID does not exist!");
+								return true;
 							}
 						} else {
 							player.sendMessage(ChatColor.RED + "You don't have permission!");
