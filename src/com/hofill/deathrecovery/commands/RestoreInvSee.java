@@ -86,7 +86,6 @@ public class RestoreInvSee implements CommandExecutor {
 								inventory.setItem(6, filler);
 								inventory.setItem(7, accept);
 								inventory.setItem(8, reject);
-
 								player.openInventory(inventory);
 							} else {
 								player.sendMessage(ChatColor.RED + "The player or the death ID does not exist!");

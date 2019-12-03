@@ -8,6 +8,7 @@ import com.hofill.deathrecovery.commands.RestoreInvGive;
 import com.hofill.deathrecovery.commands.RestoreInvSee;
 import com.hofill.deathrecovery.events.InventoryClick;
 import com.hofill.deathrecovery.events.PlayerDeath;
+import com.hofill.deathrecovery.events.PlayerJoin;
 
 public class Main extends JavaPlugin {
 
@@ -16,6 +17,7 @@ public class Main extends JavaPlugin {
 		registerDeathConfig();
 		registerEvents();
 		registerCommands();
+		new Timer(getConfig().getString("time_between_checks"), getConfig().getString("oldest_death_allowed"));
 	}
 
 	public static void tellConsole(String msg) {
@@ -28,13 +30,10 @@ public class Main extends JavaPlugin {
 		getCommand("restoreinvgive").setExecutor(new RestoreInvGive());
 	}
 
-	public void registerAutoComplete() {
-
-	}
-
 	public void registerEvents() {
 		getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
 		getServer().getPluginManager().registerEvents(new InventoryClick(), this);
+		getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
 	}
 
 	public void registerConfig() {

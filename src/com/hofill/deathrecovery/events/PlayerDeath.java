@@ -40,7 +40,8 @@ public class PlayerDeath implements Listener {
 				for (String key : sectionUUID.getKeys(false)) {
 					deaths.add(key);
 				}
-				deathId = parseInt(deaths.get(deaths.size() - 1)) + 1;
+				if(sectionUUID.getKeys(false).size() > 0)
+					deathId = parseInt(deaths.get(deaths.size() - 1)) + 1;
 			}
 		}
 		// Fill up data in deaths.yml after death
