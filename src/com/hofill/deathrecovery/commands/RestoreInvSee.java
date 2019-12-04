@@ -70,7 +70,8 @@ public class RestoreInvSee implements CommandExecutor {
             }
             // -- MAIN CODE -- \\
             for (String items : sectionDeaths.getKeys(false)) {
-                int itemIndex = parseInt(items);
+                int itemIndex = 0;
+                itemIndex = Integer.parseInt(items);
                 if (itemIndex == 40)
                     itemIndex++;
                 inventoryPosition[itemIndex / 9][itemIndex % 9] = cfg.getConfig()
