@@ -108,14 +108,14 @@ public class Deaths implements CommandExecutor {
 		LocalDateTime cut = firstDate.plusDays(ChronoUnit.DAYS.between(firstDate, secondDate));
 		Period period = Period.between(firstDate.toLocalDate(), cut.toLocalDate());
 		Duration duration = Duration.between(cut, secondDate);
-		String result = String.format("%sy %sm %sd %sh %sm %ss ago: ", period.getYears(), period.getMonths(),
+		String result = String.format("%sy %smt %sd %sh %sm %ss ago: ", period.getYears(), period.getMonths(),
 				period.getDays(), duration.toHours(), duration.toMinutesPart(), duration.toSecondsPart());
 		// Removes time info if 0
 		if (period.getYears() == 0) {
 			result = result.replace("0y ", "");
 		}
 		if (period.getMonths() == 0) {
-			result = result.replace("0m ", "");
+			result = result.replace("0mt ", "");
 		}
 		if (period.getDays() == 0) {
 			result = result.replace("0d ", "");
