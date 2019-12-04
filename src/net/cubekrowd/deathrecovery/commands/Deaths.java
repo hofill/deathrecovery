@@ -1,4 +1,4 @@
-package com.hofill.deathrecovery.commands;
+package net.cubekrowd.deathrecovery.commands;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -15,8 +15,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 
-import com.hofill.deathrecovery.ConfigManager;
-
+import net.cubekrowd.deathrecovery.ConfigManager;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;

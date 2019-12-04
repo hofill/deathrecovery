@@ -1,14 +1,14 @@
-package com.hofill.deathrecovery;
+package net.cubekrowd.deathrecovery;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.hofill.deathrecovery.commands.Deaths;
-import com.hofill.deathrecovery.commands.RestoreInvGive;
-import com.hofill.deathrecovery.commands.RestoreInvSee;
-import com.hofill.deathrecovery.events.InventoryClick;
-import com.hofill.deathrecovery.events.PlayerDeath;
-import com.hofill.deathrecovery.events.PlayerJoin;
+import net.cubekrowd.deathrecovery.commands.Deaths;
+import net.cubekrowd.deathrecovery.commands.RestoreInvGive;
+import net.cubekrowd.deathrecovery.commands.RestoreInvSee;
+import net.cubekrowd.deathrecovery.events.InventoryClick;
+import net.cubekrowd.deathrecovery.events.PlayerDeath;
+import net.cubekrowd.deathrecovery.events.PlayerJoin;
 
 public class Main extends JavaPlugin {
 

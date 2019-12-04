@@ -1,4 +1,4 @@
-package com.hofill.deathrecovery.events;
+package net.cubekrowd.deathrecovery.events;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -12,7 +12,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.hofill.deathrecovery.ConfigManager;
+import net.cubekrowd.deathrecovery.ConfigManager;
 
 public class PlayerDeath implements Listener {
 

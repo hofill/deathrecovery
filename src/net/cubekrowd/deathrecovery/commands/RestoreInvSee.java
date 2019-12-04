@@ -1,4 +1,4 @@
-package com.hofill.deathrecovery.commands;
+package net.cubekrowd.deathrecovery.commands;
 
 import java.util.ArrayList;
 
@@ -14,8 +14,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import com.hofill.deathrecovery.ConfigManager;
-
+import net.cubekrowd.deathrecovery.ConfigManager;
 import net.md_5.bungee.api.ChatColor;
 
 public class RestoreInvSee implements CommandExecutor {
@@ -50,7 +49,7 @@ public class RestoreInvSee implements CommandExecutor {
                 sender.sendMessage(ChatColor.RED + "The death ID is an integer!");
                 return false;
             }
-            if (deathID > 0) {
+            if (deathID <= 0) {
                 sender.sendMessage(ChatColor.RED + "The death ID is a number bigger than 0!");
                 return false;
             }

@@ -1,4 +1,4 @@
-package com.hofill.deathrecovery;
+package net.cubekrowd.deathrecovery;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

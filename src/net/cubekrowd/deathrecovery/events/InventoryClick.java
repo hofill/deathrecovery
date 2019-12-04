@@ -1,4 +1,4 @@
-package com.hofill.deathrecovery.events;
+package net.cubekrowd.deathrecovery.events;
 
 import java.util.ArrayList;
 

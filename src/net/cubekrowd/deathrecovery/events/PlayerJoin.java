@@ -1,4 +1,4 @@
-package com.hofill.deathrecovery.events;
+package net.cubekrowd.deathrecovery.events;
 
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -8,8 +8,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import com.hofill.deathrecovery.ConfigManager;
-
+import net.cubekrowd.deathrecovery.ConfigManager;
 import net.md_5.bungee.api.ChatColor;
 
 public class PlayerJoin implements Listener {

@@ -1,11 +1,11 @@
-package com.hofill.deathrecovery;
+package net.cubekrowd.deathrecovery;
 
 import java.io.File;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import com.hofill.deathrecovery.Main;
+import net.cubekrowd.deathrecovery.Main;
 
 public class ConfigManager {
 
