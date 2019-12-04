@@ -55,20 +55,20 @@ public class RestoreInvSee implements CommandExecutor {
                 return false;
             }
             
+            // -- MAIN CODE -- \\
             @SuppressWarnings("deprecation")
             OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(args[0]);
             String playerUUID = offlinePlayer.getUniqueId().toString();
+            // Get data from deaths.yml if there is any
             ConfigurationSection sectionDeaths = cfg.getConfig()
                     .getConfigurationSection("players." + playerUUID + "." + args[1] + ".items");
             Inventory inventory = Bukkit.createInventory(null, 45,
                     args[0] + "'s #" + args[1] + " death inventory.");
-            // Get data from deaths.yml if there is any
             ItemStack[][] inventoryPosition = new ItemStack[5][10];
             if (sectionDeaths == null) {
                 player.sendMessage(ChatColor.RED + "The player or the death ID does not exist!");
                 return true;
             }
-            // -- MAIN CODE -- \\
             for (String items : sectionDeaths.getKeys(false)) {
                 int itemIndex = 0;
                 itemIndex = Integer.parseInt(items);
