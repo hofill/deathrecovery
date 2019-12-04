@@ -123,13 +123,4 @@ public class RestoreInvSee implements CommandExecutor {
         return true;
     }
 
-    private int parseInt(String string) {
-        int x = -1;
-        try {
-            x = Integer.parseInt(string);
-        } catch (Exception ex) {
-        }
-        return x;
-    }
-
 }
