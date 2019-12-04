@@ -12,12 +12,14 @@ import com.hofill.deathrecovery.events.PlayerJoin;
 
 public class Main extends JavaPlugin {
 
+    private ConfigManager cfg;
+    
 	public void onEnable() {
 		registerConfig();
 		registerDeathConfig();
 		registerEvents();
 		registerCommands();
-		new Timer(getConfig().getString("time_between_checks"), getConfig().getString("oldest_death_allowed"));
+		new Timer(getConfig().getString("time_between_checks"), getConfig().getString("oldest_death_allowed"),cfg);
 	}
 
 	public static void tellConsole(String msg) {
@@ -25,15 +27,15 @@ public class Main extends JavaPlugin {
 	}
 
 	public void registerCommands() {
-		getCommand("deaths").setExecutor(new Deaths());
-		getCommand("restoreinvsee").setExecutor(new RestoreInvSee());
-		getCommand("restoreinvgive").setExecutor(new RestoreInvGive());
+		getCommand("deaths").setExecutor(new Deaths(cfg));
+		getCommand("restoreinvsee").setExecutor(new RestoreInvSee(cfg));
+		getCommand("restoreinvgive").setExecutor(new RestoreInvGive(cfg));
 	}
 
 	public void registerEvents() {
-		getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
+		getServer().getPluginManager().registerEvents(new PlayerDeath(cfg), this);
 		getServer().getPluginManager().registerEvents(new InventoryClick(), this);
-		getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
+		getServer().getPluginManager().registerEvents(new PlayerJoin(cfg), this);
 	}
 
 	public void registerConfig() {
@@ -42,9 +44,10 @@ public class Main extends JavaPlugin {
 	}
 
 	public void registerDeathConfig() {
-		ConfigManager.setup();
-		ConfigManager.getConfig().options().copyDefaults(true);
-		ConfigManager.saveConfig();
+	    cfg = new ConfigManager();
+	    cfg.setup();
+	    cfg.getConfig().options().copyDefaults(true);
+	    cfg.saveConfig();
 	}
 
 }

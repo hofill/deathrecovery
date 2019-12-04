@@ -16,8 +16,14 @@ import net.md_5.bungee.api.ChatColor;
 
 public class RestoreInvGive implements CommandExecutor {
 
-    @SuppressWarnings("deprecation")
+    private ConfigManager cfg;
+    
+    public RestoreInvGive(ConfigManager cfg) {
+        this.cfg = cfg;
+    }
+    
     @Override
+    @SuppressWarnings("deprecation")
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (label.equalsIgnoreCase("restoreinvgive") || label.equalsIgnoreCase("rig")) {
@@ -37,7 +43,7 @@ public class RestoreInvGive implements CommandExecutor {
                 OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(args[0]);
                 OfflinePlayer playerToAdd = null;
                 String playerUUID = offlinePlayer.getUniqueId().toString();
-                ConfigurationSection sectionDeaths = ConfigManager.getConfig()
+                ConfigurationSection sectionDeaths = cfg.getConfig()
                         .getConfigurationSection("players." + playerUUID + "." + args[1] + ".items");
                 if (args.length == 3) {
                     playerToAdd = Bukkit.getOfflinePlayer(args[2]);
@@ -60,15 +66,15 @@ public class RestoreInvGive implements CommandExecutor {
                         // If player is offline, wait for him to come online
                     } else {
                         String offlinePlayerUUID = playerToAdd.getUniqueId().toString();
-                        ConfigurationSection sectionAddOffline = ConfigManager.getConfig()
+                        ConfigurationSection sectionAddOffline = cfg.getConfig()
                                 .getConfigurationSection("offline_players." + offlinePlayerUUID);
                         if (sectionAddOffline == null) {
-                            ConfigManager.getConfig().set("offline_players." + offlinePlayerUUID + ".inv_name",
+                            cfg.getConfig().set("offline_players." + offlinePlayerUUID + ".inv_name",
                                     playerUUID);
-                            ConfigManager.getConfig().set("offline_players." + offlinePlayerUUID + ".death_id",
+                            cfg.getConfig().set("offline_players." + offlinePlayerUUID + ".death_id",
                                     args[1]);
-                            ConfigManager.saveConfig();
-                            ConfigManager.reloadConfig();
+                            cfg.saveConfig();
+                            cfg.reloadConfig();
                             player.sendMessage(ChatColor.GREEN + "Added " + playerToAdd.getName()
                                     + " to the waiting list successfully!");
                         } else {
@@ -89,10 +95,10 @@ public class RestoreInvGive implements CommandExecutor {
         return true;
     }
 
-    public static void fillInv(ConfigurationSection cs, String playerUUID, Player playerToAdd, String death_id) {
+    public void fillInv(ConfigurationSection cs, String playerUUID, Player playerToAdd, String death_id) {
         for (String items : cs.getKeys(false)) {
             int itemIndex = parseInt(items);
-            ItemStack itemToAdd = ConfigManager.getConfig()
+            ItemStack itemToAdd = cfg.getConfig()
                     .getItemStack("players." + playerUUID + "." + death_id + ".items." + items);
             playerToAdd.getInventory().setItem(itemIndex, itemToAdd);
         }
@@ -106,7 +112,7 @@ public class RestoreInvGive implements CommandExecutor {
         return true;
     }
 
-    private static int parseInt(String string) {
+    private int parseInt(String string) {
         int x = -1;
         try {
             x = Integer.parseInt(string);
