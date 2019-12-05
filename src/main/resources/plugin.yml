@@ -2,7 +2,7 @@ author: Chormi
 description: Recovers death inventories on CK.
 website: https://gitlab.com/cubekrowd/deathrecovery
 main: net.cubekrowd.deathrecovery.Main
-version: 1.0
+version: ${project.version}
 name: DeathRecovery
 api-version: 1.13
 
