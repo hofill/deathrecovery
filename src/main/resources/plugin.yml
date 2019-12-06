@@ -9,7 +9,7 @@ api-version: 1.13
 commands:
    restoreinvgive:
       description: Set user's inventory to his selected death inventory.
-      aliases: rig  
+      aliases: rig
       usage: /restoreinvgive <player> <number> <player>
    restoreinvsee:
       description: Opens a container with user's selected death inventory.
@@ -17,8 +17,11 @@ commands:
       usage: /restoreinvsee <player> <number>
    deaths:
       description: Shows all stored deaths for the player.
-      usage: /deaths <player> 
-      
+      usage: /deaths <player>
+   drteleport:
+      description: Teleports player.
+      usage: /drteleport <x> <y> <z> <world>
+
 permissions:
    deathrecovery.deaths:
       description: Gives access to death command.
@@ -28,4 +31,7 @@ permissions:
       default: op
    deathrecovery.restoresee:
       description: Gives access to the restore see command.
+      default: op
+   deathrecovery.drteleport:
+      description: Teleports player.
       default: op

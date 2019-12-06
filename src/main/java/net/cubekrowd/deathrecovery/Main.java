@@ -1,5 +1,6 @@
 package net.cubekrowd.deathrecovery;
 
+import net.cubekrowd.deathrecovery.commands.Teleport;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -30,6 +31,7 @@ public class Main extends JavaPlugin {
 		getCommand("deaths").setExecutor(new Deaths(cfg));
 		getCommand("restoreinvsee").setExecutor(new RestoreInvSee(cfg));
 		getCommand("restoreinvgive").setExecutor(new RestoreInvGive(cfg));
+		getCommand("drteleport").setExecutor(new Teleport());
 	}
 
 	public void registerEvents() {

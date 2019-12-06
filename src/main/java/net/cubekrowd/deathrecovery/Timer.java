@@ -14,7 +14,11 @@ public class Timer {
     
     public Timer(String delay, String timeToRemove, ConfigManager cfg) {
         this.cfg = cfg;
-        if (delay.isBlank() || timeToRemove.isBlank()) {
+        if(delay == null || timeToRemove == null){
+            Main.tellConsole("Please fill out config.yml!");
+            return;
+        }
+        if (delay.isEmpty() || timeToRemove.isEmpty()) {
             Main.tellConsole("Please fill out config.yml!");
         } else {
             long delayMilli = getMillis(delay);
