@@ -10,6 +10,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.UUID;
+
 public class Teleport implements CommandExecutor {
 
     @Override
@@ -29,7 +31,9 @@ public class Teleport implements CommandExecutor {
                 player.sendMessage(ChatColor.RED + "You don't have permission!");
                 return true;
             }
-            World world = Bukkit.getWorld(args[3]);
+
+            UUID worldUUID = UUID.fromString(args[3]);
+            World world = Bukkit.getWorld(worldUUID);
             int x,y,z;
             x = Integer.parseInt(args[0]);
             y = Integer.parseInt(args[1]);
@@ -39,8 +43,13 @@ public class Teleport implements CommandExecutor {
                 player.sendMessage(ChatColor.RED + "The player died too far down!");
                 return true;
             }
-            player.teleport(newLocation);
-            player.setGameMode(GameMode.SPECTATOR);
+            if(world != null){
+                player.teleport(newLocation);
+                player.setGameMode(GameMode.SPECTATOR);
+            } else {
+                player.sendMessage(ChatColor.RED + "The world is not loaded!");
+            }
+
         }
 
         return true;
