@@ -49,7 +49,7 @@ public class Deaths implements CommandExecutor {
                 ConfigurationSection sectionDeaths = cfg.getConfig()
                         .getConfigurationSection("players." + playerUUID);
                 // Get data from deaths.yml if there is any
-                if (sectionDeaths != null) {
+                if (sectionDeaths != null && !sectionDeaths.getKeys(false).isEmpty()) {
                     player.sendMessage(ChatColor.GOLD + args[0] + "'s deaths:");
                     for (String death : sectionDeaths.getKeys(false)) {
 //								ConfigurationSection sectionDeathDetails = ConfigManager.getConfig()
