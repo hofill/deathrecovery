@@ -1,5 +1,6 @@
 package net.cubekrowd.deathrecovery.commands;
 
+import net.cubekrowd.deathrecovery.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
@@ -94,6 +95,10 @@ public class RestoreInvGive implements CommandExecutor {
                     }
                 }
             } else {
+                if(cfg.getConfig().getString("players." + playerUUID + "." + args[1] + ".item_count") != null) {
+                    player.sendMessage(ChatColor.DARK_AQUA + "The inventory is empty for that death ID!");
+                    return true;
+                }
                 player.sendMessage(ChatColor.RED + "The player or the death ID does not exist!");
                 return true;
             }

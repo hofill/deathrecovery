@@ -65,6 +65,10 @@ public class RestoreInvSee implements CommandExecutor {
                     args[0] + "'s #" + args[1] + " death inventory.");
             ItemStack[][] inventoryPosition = new ItemStack[5][10];
             if (sectionDeaths == null) {
+                if(cfg.getConfig().getString("players." + playerUUID + "." + args[1] + ".item_count") != null) {
+                    player.sendMessage(ChatColor.DARK_AQUA + "The inventory is empty for that death ID!");
+                    return true;
+                }
                 player.sendMessage(ChatColor.RED + "The player or the death ID does not exist!");
                 return true;
             }

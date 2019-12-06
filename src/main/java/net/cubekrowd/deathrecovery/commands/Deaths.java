@@ -88,7 +88,7 @@ public class Deaths implements CommandExecutor {
                                 .create());
                     }
                 } else {
-                    player.sendMessage(ChatColor.RED + "The player " + args[0] + " has never died on the server.");
+                    player.sendMessage(ChatColor.RED + "The player " + args[0] + " has no history of deaths saved.");
                     return true;
                 }
             } else {
