@@ -70,7 +70,7 @@ public class RestoreInvGive implements CommandExecutor {
                         // Add items to the player's inventory
                         fillInv(sectionDeaths, playerUUID, playerToAdd.getPlayer(), args[1]);
                         player.sendMessage(ChatColor.GREEN + "Restored " + offlinePlayer.getName()
-                                + "'s inventory to " + playerToAdd + "successfully!");
+                                + "'s inventory to " + playerToAdd.getName() + "successfully!");
                     } else {
                         player.sendMessage(ChatColor.RED + playerToAdd.getName() + "'s inventory is not empty!");
                     }

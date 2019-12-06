@@ -10,14 +10,14 @@ commands:
    restoreinvgive:
       description: Set user's inventory to his selected death inventory.
       aliases: rig
-      usage: /restoreinvgive <player> <number> <player>
+      usage: /restoreinvgive <owner> <number> <player>
    restoreinvsee:
       description: Opens a container with user's selected death inventory.
       aliases: ris
-      usage: /restoreinvsee <player> <number>
+      usage: /restoreinvsee <owner> <number>
    deaths:
       description: Shows all stored deaths for the player.
-      usage: /deaths <player>
+      usage: /deaths <owner>
    drteleport:
       description: Teleports player.
       usage: /drteleport <x> <y> <z> <world>

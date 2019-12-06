@@ -70,16 +70,16 @@ public class Deaths implements CommandExecutor {
                                 .getString("players." + playerUUID + "." + death + ".server_time");
                         // Get difference of time
                         String time_difference = getTimeDifference(server_time);
-                        String coordinates = String.format(" X=%s Y=%s Z=%s World=%s", death_x, death_y, death_z, world);
+                        String coordinates = String.format(" X=%s Y=%s Z=%s", death_x, death_y, death_z);
                         // Send message with death info
                         player.spigot().sendMessage(new ComponentBuilder("#" + death + " ").color(ChatColor.WHITE)
                                 .bold(true).append(time_difference + death_type + " at").color(ChatColor.GRAY)
-                                .bold(false).append(coordinates).color(ChatColor.DARK_GRAY).bold(true)
+                                .bold(false).append(coordinates).color(ChatColor.DARK_AQUA).bold(true)
                                 .event(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
                                         new ComponentBuilder("Click to teleport!").color(ChatColor.BLUE).create()))
                                 .event(new ClickEvent(ClickEvent.Action.RUN_COMMAND,
                                         "/drteleport " + death_x + " " + death_y + " " + death_z + " " + world))
-                                .append(" (" + item_count + " items)").color(ChatColor.DARK_GRAY).bold(true)
+                                .append(" (" + item_count + " items)").color(ChatColor.DARK_AQUA).bold(true)
                                 .event(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
                                         new ComponentBuilder("Click to show inventory!").color(ChatColor.BLUE)
                                                 .create()))

@@ -59,7 +59,7 @@ public class PlayerDeath implements Listener {
         cfg.getConfig().set("players." + playerUUID + "." + deathId + ".death_z",
                 player.getLocation().getBlockZ());
         cfg.getConfig().set("players." + playerUUID + "." + deathId + ".world",
-                player.getLocation().getWorld().getName());
+                player.getLocation().getWorld().getUID().toString());
         cfg.getConfig().set("players." + playerUUID + "." + deathId + ".death_type", event.getDeathMessage());
         cfg.getConfig().set("players." + playerUUID + "." + deathId + ".server_time",
                 currentDateTime.format(format));

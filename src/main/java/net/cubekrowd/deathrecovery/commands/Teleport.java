@@ -29,19 +29,18 @@ public class Teleport implements CommandExecutor {
                 player.sendMessage(ChatColor.RED + "You don't have permission!");
                 return true;
             }
-            World world = Bukkit.getServer().getWorld(args[3]);
+            World world = Bukkit.getWorld(args[3]);
             int x,y,z;
             x = Integer.parseInt(args[0]);
             y = Integer.parseInt(args[1]);
             z = Integer.parseInt(args[2]);
             Location newLocation = new Location(world, x, y, z);
-            if(y < 1){
+            if(y < 1) {
                 player.sendMessage(ChatColor.RED + "The player died too far down!");
                 return true;
             }
-            player.setGameMode(GameMode.SPECTATOR);
             player.teleport(newLocation);
-
+            player.setGameMode(GameMode.SPECTATOR);
         }
 
         return true;
