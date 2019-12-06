@@ -37,6 +37,7 @@ public class Teleport implements CommandExecutor {
             Location newLocation = new Location(world, x, y, z);
             if(y < 1){
                 player.sendMessage(ChatColor.RED + "The player died too far down!");
+                return true;
             }
             player.setGameMode(GameMode.SPECTATOR);
             player.teleport(newLocation);
