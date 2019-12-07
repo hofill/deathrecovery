@@ -27,6 +27,7 @@ public class Timer {
 
                 @Override
                 public void run() {
+                    int counter = 0;
                     ConfigurationSection sectionPlayers = cfg.getConfig().getConfigurationSection("players");
                     if (sectionPlayers != null) {
                         for (String key : sectionPlayers.getKeys(false)) {
@@ -44,6 +45,7 @@ public class Timer {
                                     Date serverDate = new Date();
 
                                     if (timeToRemoveMilli <= serverDate.getTime() - dateDeath.getTime()) {
+                                        counter++;
                                         cfg.getConfig().getConfigurationSection("players." + key).set(death,
                                                 null);
                                         cfg.saveConfig();
@@ -52,6 +54,7 @@ public class Timer {
                                 }
                             }
                         }
+                        Main.tellConsole("[DeathRecovery] Removed " + counter + " inventories!");
                     }
                 }
             };
