@@ -34,10 +34,17 @@ public class Teleport implements CommandExecutor {
 
             UUID worldUUID = UUID.fromString(args[3]);
             World world = Bukkit.getWorld(worldUUID);
-            int x,y,z;
-            x = Integer.parseInt(args[0]);
-            y = Integer.parseInt(args[1]);
-            z = Integer.parseInt(args[2]);
+
+            int x=0,y=0,z=0;
+
+            try {
+                x = Integer.parseInt(args[0]);
+                y = Integer.parseInt(args[1]);
+                z = Integer.parseInt(args[2]);
+            } catch (NumberFormatException ex){
+                player.sendMessage(ChatColor.RED + "The coordinates must be numbers!");
+                return true;
+            }
             Location newLocation = new Location(world, x, y, z);
             if(y < 1) {
                 player.sendMessage(ChatColor.RED + "The player died too far down!");
