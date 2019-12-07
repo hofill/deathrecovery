@@ -32,8 +32,15 @@ public class Teleport implements CommandExecutor {
                 return true;
             }
 
-            UUID worldUUID = UUID.fromString(args[3]);
-            World world = Bukkit.getWorld(worldUUID);
+            World world;
+
+            try {
+                UUID worldUUID = UUID.fromString(args[3]);
+                world = Bukkit.getWorld(worldUUID);
+            } catch (Exception ex){
+                player.sendMessage(ChatColor.RED + "World UUID is incorrect!");
+                return true;
+            }
 
             int x=0,y=0,z=0;
 
