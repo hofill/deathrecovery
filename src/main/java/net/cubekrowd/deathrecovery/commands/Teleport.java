@@ -58,8 +58,8 @@ public class Teleport implements CommandExecutor {
                 return true;
             }
             if(world != null){
-                player.teleport(newLocation);
                 player.setGameMode(GameMode.SPECTATOR);
+                player.teleport(newLocation);
             } else {
                 player.sendMessage(ChatColor.RED + "The world is not loaded!");
             }
