@@ -1,4 +1,5 @@
 # DeathRecovery
+For latest updates: https://gitlab.com/cubekrowd/plugins/deathrecovery
 
 Author: Chormi (hofill)
 
